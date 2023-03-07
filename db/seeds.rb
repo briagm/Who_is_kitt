@@ -6,14 +6,24 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
+
+# DELETE ALL RECORDS
+Feature.destroy_all
+Card.destroy_all
+Character.destroy_all
+Characteristic.destroy_all
+Player.destroy_all
+User.destroy_all
+Game.destroy_all
+
 # Create the game
 puts "seeding game"
-new_game = Game.create(statuts: "pending")
+new_game = Game.create(status: "pending")
 puts "finished seeding game"
 
 # Create the users
 puts "seeding users"
-user_briag = User.create!(email: "briag.martin@gmail.com", password: "password", password_confirmation: "password", nickname: "Briag dit le petit zizi", score: 0)
+user_briag = User.create!(email: "briag.martin@gmail.com", password: "password", password_confirmation: "password", nickname: "Briag", score: 0)
 user_baptiste = User.create!(email: "baptil@gmail.com", password: "password", password_confirmation: "password", nickname: "Baptiste", score: 0)
 user_charles = User.create!(email: "charleswoehl@gmail.com", password: "password", password_confirmation: "password", nickname: "Charles", score: 0)
 puts "seeded #{User.count} users"
@@ -190,7 +200,7 @@ puts "finished seeding features for George"
 
 #Herman
 puts "seeding features for Herman"
-herman.features.create(characteristic: cheveux_chauve)
+herman.features.create(characteristic: chauve)
 herman.features.create(characteristic: cheveux_roux)
 herman.features.create(characteristic: yeux_marrons)
 herman.features.create(characteristic: homme)
