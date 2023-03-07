@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_07_103022) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_07_112624) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -42,6 +42,70 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_07_103022) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "cards", force: :cascade do |t|
+    t.boolean "guess"
+    t.boolean "active"
+    t.bigint "character_id", null: false
+    t.bigint "player_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["character_id"], name: "index_cards_on_character_id"
+    t.index ["player_id"], name: "index_cards_on_player_id"
+  end
+
+  create_table "characteristics", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "characters", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "features", force: :cascade do |t|
+    t.boolean "match"
+    t.bigint "character_id", null: false
+    t.bigint "characteristic_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["character_id"], name: "index_features_on_character_id"
+    t.index ["characteristic_id"], name: "index_features_on_characteristic_id"
+  end
+
+  create_table "games", force: :cascade do |t|
+    t.string "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "players", force: :cascade do |t|
+    t.boolean "winner"
+    t.integer "score"
+    t.string "chifoumi"
+    t.boolean "current_player"
+    t.bigint "user_id", null: false
+    t.bigint "game_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["game_id"], name: "index_players_on_game_id"
+    t.index ["user_id"], name: "index_players_on_user_id"
+  end
+
+  create_table "turns", force: :cascade do |t|
+    t.integer "number"
+    t.bigint "player_id", null: false
+    t.bigint "card_id", null: false
+    t.bigint "characteristic_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["card_id"], name: "index_turns_on_card_id"
+    t.index ["characteristic_id"], name: "index_turns_on_characteristic_id"
+    t.index ["player_id"], name: "index_turns_on_player_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -56,4 +120,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_07_103022) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "cards", "characters"
+  add_foreign_key "cards", "players"
+  add_foreign_key "features", "characteristics"
+  add_foreign_key "features", "characters"
+  add_foreign_key "players", "games"
+  add_foreign_key "players", "users"
+  add_foreign_key "turns", "cards"
+  add_foreign_key "turns", "characteristics"
+  add_foreign_key "turns", "players"
 end
