@@ -298,8 +298,32 @@ puts "finished seeding features for Tom"
 puts "finished seeding features"
 
 # Create the cards
-puts "seeding cards"
-card_1 = Card.create(character: alex, player: player_one)
-card_2 = Card.create(character: alfred, player: player_one)
-card_3 = Card.create(character: anita, player: player_one)
-card_4 = Card.create(character: anne, player: player_one)
+puts "seeding cards for player one"
+[player_one, player_two].each do |player|
+  Card.create(character: alex, player: player)
+  Card.create(character: alfred, player: player)
+  Card.create(character: anita, player: player)
+  Card.create(character: anne, player: player)
+  Card.create(character: bernard, player: player)
+  Card.create(character: bill, player: player)
+  Card.create(character: charles, player: player)
+  Card.create(character: claire, player: player)
+  Card.create(character: david, player: player)
+  Card.create(character: eric, player: player)
+  Card.create(character: frans, player: player)
+  Card.create(character: george, player: player)
+  Card.create(character: herman, player: player)
+  Card.create(character: joe, player: player)
+  Card.create(character: maria, player: player)
+  Card.create(character: max, player: player)
+  Card.create(character: paul, player: player)
+  Card.create(character: peter, player: player)
+  Card.create(character: philip, player: player)
+  Card.create(character: richard, player: player)
+  Card.create(character: robert, player: player)
+  Card.create(character: sam, player: player)
+  Card.create(character: susan, player: player)
+  Card.create(character: tom, player: player)
+end
+puts "seeded #{Card.count} cards"
+puts "finished seeding cards for player one"
