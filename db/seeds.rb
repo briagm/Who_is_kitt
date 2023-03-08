@@ -6,6 +6,8 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
+require "open-uri"
+
 # DELETE ALL RECORDS
 Feature.destroy_all
 Card.destroy_all
@@ -58,30 +60,149 @@ puts "finished seeding characteristics"
 
 # Create the characters
 puts "seeding characters"
-alex = Character.create(name: "Alex")
-alfred = Character.create(name: "Alfred")
-anita = Character.create(name: "Anita")
-anne = Character.create(name: "Anne")
-bernard = Character.create(name: "Bernard")
-bill = Character.create(name: "Bill")
-charles = Character.create(name: "Charles")
-claire = Character.create(name: "Claire")
-david = Character.create(name: "David")
-eric = Character.create(name: "Eric")
-frans = Character.create(name: "Frans")
-george = Character.create(name: "George")
-herman = Character.create(name: "Herman")
-joe = Character.create(name: "Joe")
-maria = Character.create(name: "Maria")
-max = Character.create(name: "Max")
-paul = Character.create(name: "Paul")
-peter = Character.create(name: "Peter")
-philip = Character.create(name: "Philip")
-richard = Character.create(name: "Richard")
-robert = Character.create(name: "Robert")
-sam = Character.create(name: "Sam")
-susan = Character.create(name: "Susan")
-tom = Character.create(name: "Tom")
+alex = Character.new(name: "Alex")
+file = URI.open("app/assets/images/guesswho_profiles/alex.jpg")
+alex.photo.attach(io: file, filename: "alex.jpg", content_type: "image/jpg")
+alex.save
+puts "seeded alex is created"
+
+alfred = Character.new(name: "Alfred")
+file = URI.open("app/assets/images/guesswho_profiles/alfred.jpg")
+alfred.photo.attach(io: file, filename: "alfred.jpg", content_type: "image/jpg")
+alfred.save
+puts "seeded alfred is created"
+
+anita = Character.new(name: "Anita")
+file = URI.open("app/assets/images/guesswho_profiles/anita.jpg")
+anita.photo.attach(io: file, filename: "anita.jpg", content_type: "image/jpg")
+anita.save
+puts "seeded anita is created"
+
+anne = Character.new(name: "Anne")
+file = URI.open("app/assets/images/guesswho_profiles/anne.jpg")
+anne.photo.attach(io: file, filename: "anne.jpg", content_type: "image/jpg")
+anne.save
+puts "seeded anne is created"
+
+bernard = Character.new(name: "Bernard")
+file = URI.open("app/assets/images/guesswho_profiles/bernard.jpg")
+bernard.photo.attach(io: file, filename: "bernard.jpg", content_type: "image/jpg")
+bernard.save
+puts "seeded bernard is created"
+
+bill = Character.new(name: "Bill")
+file = URI.open("app/assets/images/guesswho_profiles/bill.jpg")
+bill.photo.attach(io: file, filename: "bill.jpg", content_type: "image/jpg")
+bill.save
+puts "seeded bill is created"
+
+charles = Character.new(name: "Charles")
+file = URI.open("app/assets/images/guesswho_profiles/charles.jpg")
+charles.photo.attach(io: file, filename: "charles.jpg", content_type: "image/jpg")
+charles.save
+puts "seeded charles is created"
+
+claire = Character.new(name: "Claire")
+file = URI.open("app/assets/images/guesswho_profiles/claire.jpg")
+claire.photo.attach(io: file, filename: "claire.jpg", content_type: "image/jpg")
+claire.save
+puts "seeded claire is created"
+
+david = Character.new(name: "David")
+file = URI.open("app/assets/images/guesswho_profiles/david.jpg")
+david.photo.attach(io: file, filename: "david.jpg", content_type: "image/jpg")
+david.save
+puts "seeded david is created"
+
+eric = Character.new(name: "Eric")
+file = URI.open("app/assets/images/guesswho_profiles/eric.jpg")
+eric.photo.attach(io: file, filename: "eric.jpg", content_type: "image/jpg")
+eric.save
+puts "seeded eric is created"
+
+frans = Character.new(name: "Frans")
+file = URI.open("app/assets/images/guesswho_profiles/frans.jpg")
+frans.photo.attach(io: file, filename: "frans.jpg", content_type: "image/jpg")
+frans.save
+puts "seeded frans is created"
+
+george = Character.new(name: "George")
+file = URI.open("app/assets/images/guesswho_profiles/george.jpg")
+george.photo.attach(io: file, filename: "george.jpg", content_type: "image/jpg")
+george.save
+puts "seeded george is created"
+
+herman = Character.new(name: "Herman")
+file = URI.open("app/assets/images/guesswho_profiles/herman.jpg")
+herman.photo.attach(io: file, filename: "herman.jpg", content_type: "image/jpg")
+herman.save
+puts "seeded herman is created"
+
+joe = Character.new(name: "Joe")
+file = URI.open("app/assets/images/guesswho_profiles/joe.jpg")
+joe.photo.attach(io: file, filename: "joe.jpg", content_type: "image/jpg")
+joe.save
+puts "seeded joe is created"
+
+maria = Character.new(name: "Maria")
+file = URI.open("app/assets/images/guesswho_profiles/maria.jpg")
+maria.photo.attach(io: file, filename: "maria.jpg", content_type: "image/jpg")
+maria.save
+puts "seeded maria is created"
+
+max = Character.new(name: "Max")
+file = URI.open("app/assets/images/guesswho_profiles/max.jpg")
+max.photo.attach(io: file, filename: "max.jpg", content_type: "image/jpg")
+max.save
+puts "seeded max is created"
+
+paul = Character.new(name: "Paul")
+file = URI.open("app/assets/images/guesswho_profiles/paul.jpg")
+paul.photo.attach(io: file, filename: "paul.jpg", content_type: "image/jpg")
+paul.save
+puts "seeded paul is created"
+
+peter = Character.new(name: "Peter")
+file = URI.open("app/assets/images/guesswho_profiles/peter.jpg")
+peter.photo.attach(io: file, filename: "peter.jpg", content_type: "image/jpg")
+peter.save
+puts "seeded peter is created"
+
+philip = Character.new(name: "Philip")
+file = URI.open("app/assets/images/guesswho_profiles/philip.jpg")
+philip.photo.attach(io: file, filename: "philip.jpg", content_type: "image/jpg")
+philip.save
+puts "seeded philip is created"
+
+richard = Character.new(name: "Richard")
+file = URI.open("app/assets/images/guesswho_profiles/richard.jpg")
+richard.photo.attach(io: file, filename: "richard.jpg", content_type: "image/jpg")
+richard.save
+puts "seeded richard is created"
+
+robert = Character.new(name: "Robert")
+file = URI.open("app/assets/images/guesswho_profiles/robert.jpg")
+robert.photo.attach(io: file, filename: "robert.jpg", content_type: "image/jpg")
+robert.save
+puts "seeded robert is created"
+
+sam = Character.new(name: "Sam")
+file = URI.open("app/assets/images/guesswho_profiles/sam.jpg")
+sam.photo.attach(io: file, filename: "sam.jpg", content_type: "image/jpg")
+sam.save
+puts "seeded sam is created"
+
+susan = Character.new(name: "Susan")
+file = URI.open("app/assets/images/guesswho_profiles/susan.jpg")
+susan.photo.attach(io: file, filename: "susan.jpg", content_type: "image/jpg")
+susan.save
+puts "seeded susan is created"
+
+tom = Character.new(name: "Tom")
+file = URI.open("app/assets/images/guesswho_profiles/tom.jpg")
+tom.photo.attach(io: file, filename: "tom.jpg", content_type: "image/jpg")
+tom.save
+puts "seeded tom is created"
 puts "seeded #{Character.count} characters"
 puts "finished seeding characters"
 
