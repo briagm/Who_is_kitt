@@ -1,1 +1,13 @@
 <%= @user %>
+
+<br>
+
+<% @ranking.each do |score| %>
+  <%= score %>
+<% end %>
+
+<br>
+
+<% @game.each do |game| %>
+<%= game.id %>
+<% end %>
