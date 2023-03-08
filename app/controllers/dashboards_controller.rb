@@ -3,6 +3,7 @@ class DashboardsController < ApplicationController
   def show
     @user = current_user
     @ranking = compute_users_ranking
+    @game = Game.all
   end
 
   private
