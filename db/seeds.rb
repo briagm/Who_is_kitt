@@ -367,9 +367,9 @@ puts "finished seeding features for Paul"
 #Peter
 puts "seeding features for Peter"
 peter.features.create(characteristic: cheveux_courts)
-paul.features.create(characteristic: cheveux_blancs)
-paul.features.create(characteristic: yeux_bleus)
-paul.features.create(characteristic: homme)
+peter.features.create(characteristic: cheveux_blancs)
+peter.features.create(characteristic: yeux_bleus)
+peter.features.create(characteristic: homme)
 puts "finished seeding features for Peter"
 
 #Philip
@@ -428,7 +428,7 @@ puts "finished seeding features for Tom"
 puts "finished seeding features"
 
 # Create the cards
-puts "seeding cards for player one"
+puts "seeding cards for players"
 [player_one, player_two].each do |player|
   Card.create(character: alex, player: player)
   Card.create(character: alfred, player: player)
@@ -456,4 +456,4 @@ puts "seeding cards for player one"
   Card.create(character: tom, player: player)
 end
 puts "seeded #{Card.count} cards"
-puts "finished seeding cards for player one"
+puts "finished seeding cards for players"
