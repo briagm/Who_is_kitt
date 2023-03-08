@@ -50,6 +50,7 @@ class GamesController < ApplicationController
     if game.save
       Player.create(user: current_user, game: game, score: 0)
       redirect_to shifoumi_game_path
+    end
   end
 
   private
@@ -65,6 +66,5 @@ end
 def create
   @character = Character.find(params[:character_id])
   @player = current_user.player
-
   redirect_to game_path @player.game
 end

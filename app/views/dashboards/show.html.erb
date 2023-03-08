@@ -1,13 +1,13 @@
-<%= @user %>
+<%= @user.nickname %>
 
 <br>
 
 <% @ranking.each do |score| %>
-  <%= score %>
+  <%= score.score %>
 <% end %>
 
 <br>
 
 <% @game.each do |game| %>
-<%= game.id %>
+Jeu numéro : <%= game.id %>
 <% end %>
