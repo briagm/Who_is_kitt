@@ -1,0 +1,7 @@
+<%= simple_form_for(user) do |f| %>
+  <%= f.input :nickname %>
+  <%= f.input :email %>
+  <%= f.input :encrypted_password %>
+  <%= f.input :photo, as: :file %>
+  <%= f.submit "Register", class:"btn-flat"%>
+<% end %>
