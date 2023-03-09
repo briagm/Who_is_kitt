@@ -6,7 +6,7 @@ class Card < ApplicationRecord
   validates :player, presence: true
 
   def characteristics
-    card = Card.includes(character: { features: [:characteristic] }).find(self.id)
-    card.character.features.map(&:characteristic)
+    # card = Card.includes(character: { features: [:characteristic] }).find(self.id)
+    self.character.features.map(&:characteristic)
   end
 end

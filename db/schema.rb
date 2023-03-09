@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_08_103425) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_09_102750) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -51,6 +51,18 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_08_103425) do
     t.datetime "updated_at", null: false
     t.index ["character_id"], name: "index_cards_on_character_id"
     t.index ["player_id"], name: "index_cards_on_player_id"
+  end
+
+  create_table "characteristic_questions", force: :cascade do |t|
+    t.bigint "game_id", null: false
+    t.bigint "player_id", null: false
+    t.bigint "characteristic_id", null: false
+    t.boolean "answer"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["characteristic_id"], name: "index_characteristic_questions_on_characteristic_id"
+    t.index ["game_id"], name: "index_characteristic_questions_on_game_id"
+    t.index ["player_id"], name: "index_characteristic_questions_on_player_id"
   end
 
   create_table "characteristics", force: :cascade do |t|
@@ -124,6 +136,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_08_103425) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "cards", "characters"
   add_foreign_key "cards", "players"
+  add_foreign_key "characteristic_questions", "characteristics"
+  add_foreign_key "characteristic_questions", "games"
+  add_foreign_key "characteristic_questions", "players"
   add_foreign_key "features", "characteristics"
   add_foreign_key "features", "characters"
   add_foreign_key "players", "games"
