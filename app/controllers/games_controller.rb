@@ -48,9 +48,13 @@ class GamesController < ApplicationController
   end
 
   def show
-    @game = Game.find(params[:id])
-    @player = Player.where(game_id: @game)
-    @card = Card.where(player_id: @player)
+    @game = Game.includes(players: { cards: { character: { features: :characteristic, photo_attachment: :blob}}}).find(params[:id])
+    # @game = Game.find(params[:id])
+    @characteristic_question = CharacteristicQuestion.new
+    @characteristic_collection = Characteristic.all
+
+    # @player = Player.where(game_id: @game)
+    # @card = Card.where(player_id: @player)
     @player_one = @game.players[0]
     @player_two = @game.players[1]
     @player_one_cards = @player_one.cards

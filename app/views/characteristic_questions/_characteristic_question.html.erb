@@ -1,0 +1,10 @@
+<div id="question-<%= char_question.id %>" <% if char_question.id.odd? %> class="bg-grey" <% else %>class="bg-cream"<%end  %>>
+  <code>
+    <strong><%= char_question.player.user.nickname %> demande si votre personnage possède :</strong>
+  </code>
+  <p><b><%= char_question.characteristic.name %></b></p>
+  <div class="d-flex">
+    <p class="p-2"><%= link_to "OUI", "#", class: "btn btn-success" %></p>
+    <p class="p-2"><%= link_to "NON", "#", class: "btn btn-danger" %></p>
+  </div>
+</div>
