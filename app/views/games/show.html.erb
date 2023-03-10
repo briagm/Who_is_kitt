@@ -1,13 +1,15 @@
 
+<%= render partial: "active_game" %>
+
 <div class="container"
   data-controller="game-subscription"
-  data-game-subscription-game-id-value="<%= @game.id %>"
+  data-game-subscription-game-id-value=>"<%= @game.id %>"
   <%= render partial: "game", locals: { game: @game } %>
-  
+
 <div class="d-flex justify-content-end">
   <div class="container game"
     data-controller="game-subscription"
-    data-game-subscription-game-id-value="<%= @game.id %>"
+    data-game-subscription-game-id-value="<%= @game.id %>">
 
     <div class="questions" data-game-subscription-target="questions">
       <% @game.characteristic_questions.each do |char_question| %>

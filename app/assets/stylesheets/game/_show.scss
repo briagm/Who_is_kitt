@@ -13,13 +13,11 @@ h2 {
 
 
 .game {
-  background: white;
   margin-top: 9px;
    display: flex;
   flex-direction: column;
   justify-content: space-between;
   // flex-grow: 1;
-  width: 350px;
 
   h1 {
     border-bottom: 1px solid $gray-200;
