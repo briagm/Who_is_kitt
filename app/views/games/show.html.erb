@@ -1,14 +1,13 @@
-<div class="container">
-  <p> Statut du jeu : <%= @game.status %></p>
-  <p>Jeu numéro : <%= @game.id %> </p>
-  <p>Joueur numéro 1 : <%=  @player_one.user.nickname  %> (Playeur :<%=  @player_one.id  %>)</p>
-  <p>Joueur numéro 2 : <%=  @player_two.user.nickname  %>(Playeur :<%=  @player_two.id  %>)</p>
 
+<div class="container"
+  data-controller="game-subscription"
+  data-game-subscription-game-id-value="<%= @game.id %>"
+  <%= render partial: "game", locals: { game: @game } %>
+  
 <div class="d-flex justify-content-end">
   <div class="container game"
     data-controller="game-subscription"
     data-game-subscription-game-id-value="<%= @game.id %>"
-  >
 
     <div class="questions" data-game-subscription-target="questions">
       <% @game.characteristic_questions.each do |char_question| %>
@@ -73,6 +72,4 @@
       <% end %>
     </div>
   </div>
-
-
 </div>

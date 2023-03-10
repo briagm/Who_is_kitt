@@ -3,7 +3,9 @@ class DashboardsController < ApplicationController
   def show
     @user = current_user
     @ranking = compute_users_ranking
-    @game = Game.all
+    @games = @user.games
+    @new_game = Game.new
+    @pending_game = @games.where(status: 'pending').first
   end
 
   private
