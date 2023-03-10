@@ -1,5 +1,5 @@
 <div class="d-flex flex-column align-items-center">
-  <div class="d-flex mt-4">
+  <div class="d-flex mt-5">
     <%= image_tag "logos/logo.png", width: 500%>
   </div>
   <div class="d-flex">
@@ -9,7 +9,7 @@
     <% if user_signed_in? %>
     <div class="d-flex flex-column align-items-center">
     <div class="my-3"><%= link_to "Mon dashboard", dashboard_path, class: "btn btn-warning droit" %></div>
-    <div><%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "btn btn-outline-warning droit" %></div>
+    <div><%= link_to "Déconnexion", destroy_user_session_path, data: {turbo_method: :delete}, class: "btn btn-outline-warning droit" %></div>
     <% else %>
   <div class="d-flex flex-column align-items-center">
     <div class="my-3"> <%= link_to "Se connecter", new_user_session_path, class: "btn btn-warning"  %></div>
