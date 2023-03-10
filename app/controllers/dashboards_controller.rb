@@ -17,8 +17,6 @@ class DashboardsController < ApplicationController
     end
   end
   def compute_users_ranking
-      User.order(score: :desc) # { user: user, score: 89} sorted by score: :desc
+    User.order(score: :desc) # { user: user, score: 89} sorted by score: :desc
   end
-
-
 end
