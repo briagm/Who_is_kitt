@@ -1,22 +1,28 @@
-<div class="container">
-<h2>Log in</h2>
+<div class="container align-items-center mt-5 ">
+  <div class="d-flex flex-column mb-3 block-identification w-50 ">
+    <div class="p-2"><h1>Connexion</h1></div>
+    <div class="p-2">
+      <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), data: { turbo: :false }) do |f| %>
+        <div class="form-inputs">
+          <%= f.input :email,
+                      required: false,
+                      autofocus: true,
+                      input_html: { autocomplete: "email" } %>
+          <%= f.input :password,
+                      required: false,
+                      label: 'Mot de passe',
+                      input_html: { autocomplete: "current-password" } %>
+          <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+        </div>
 
-<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), data: { turbo: :false }) do |f| %>
-  <div class="form-inputs">
-    <%= f.input :email,
-                required: false,
-                autofocus: true,
-                input_html: { autocomplete: "email" } %>
-    <%= f.input :password,
-                required: false,
-                input_html: { autocomplete: "current-password" } %>
-    <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+      <div class="form-actions">
+
+        <%= f.button :submit, "Connexion" , class: "btn btn-warning-login" %>
+      </div>
+    <% end %></div>
+    <div class="p-2 d-flex justify-content-between">
+      <div> <%= link_to "Créer un compte", new_user_registration_path, class: "btn btn-outline-warning blogin" %></div>
+      <div> <%= link_to "Mot de passe oublié ?", new_password_path(resource_name), class: "btn btn-outline-warning blogin" %></div>
+    </div>
   </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Log in" , class: "btn btn-outline-success" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
 </div>

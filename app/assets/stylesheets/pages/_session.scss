@@ -1,0 +1,77 @@
+h1 {
+  font-family: "street";
+  text-align: center;
+}
+h3 {
+  font-family: "Cabin";
+}
+
+.block-identification {
+  background: linear-gradient(#F8C83C, #D51E22 );
+  border-radius: 10px;
+  margin: 0 auto;
+  padding: 2% 4% ;
+}
+
+
+.form-control {
+  border-radius: 30px;
+  color:#999 !important;
+}
+
+.form-label {
+  color: #333;
+  font-size: 12px;
+}
+
+.btn-warning {
+  background-color: #FBD03D !important;
+  border-radius: 40px !important;
+  color: #005BA1;
+  padding:10px 5px;
+  width: 150px;
+  transform: rotate(-5deg); /* Équivalent à rotateZ(45deg) */
+  margin: 40px 0 20px 0;
+  transition: 0.2s;
+
+}
+.btn-warning-login {
+  background-color: #FBD03D !important;
+  border-radius: 40px !important;
+  color: #005BA1;
+  padding:10px 5px;
+  width: 100%;
+   margin: 40px 0 20px 0;
+
+}
+
+.btn-outline-warning {
+  border-radius: 40px !important;
+  color: #FBD03D;
+  padding:10px 5px;
+  width: 200px;
+  transform: rotate(5deg); /* Équivalent à rotateZ(45deg) */
+  transition: 0.2s;
+}
+.blogin {
+  transform: rotate(0deg);
+  transition: none;
+}
+
+
+.btn-warning:hover {
+  transform: rotate(0deg); /* Équivalent à rotateZ(45deg) */
+  transition: 0.2s;
+
+}
+.btn-outline-warning:hover{
+  transform: rotate(0deg); /* Équivalent à rotateZ(45deg) */
+  transition: 0.2s;
+
+}
+.droit {
+  transform: rotate(0deg); /* Équivalent à rotateZ(45deg) */
+}
+.droit:hover {
+  transform: rotate(0deg); /* Équivalent à rotateZ(45deg) */
+}
