@@ -1,0 +1,23 @@
+<p>Status active game</p>
+<div class="d-flex justify-content-end">
+  <div class="container game">
+
+    <div class="questions" data-game-subscription-target="questions">
+      <% game.characteristic_questions.each do |char_question| %>
+        <%= render "characteristic_questions/characteristic_question", char_question: char_question %>
+      <% end %>
+    </div>
+  </div>
+  <div class="container game">
+    <%= simple_form_for [game, @characteristic_question],
+      html: {class: "d-flex"} do |f|
+    %>
+      <%= f.association :characteristic,
+        as: :radio_buttons,
+        collection: @characteristic_collection,
+        wrapper_html: {class: "flex-grow-1"}
+      %>
+      <%= f.submit "Send", class: "btn btn-primary mb-3" %>
+    <% end %>
+  </div>
+</div>
