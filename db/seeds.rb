@@ -12,6 +12,7 @@ require "open-uri"
 Feature.destroy_all
 Card.destroy_all
 Character.destroy_all
+CharacteristicQuestion.destroy_all
 Characteristic.destroy_all
 Player.destroy_all
 User.destroy_all
