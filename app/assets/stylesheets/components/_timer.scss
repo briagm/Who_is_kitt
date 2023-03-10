@@ -1,0 +1,30 @@
+.round-time-bar {
+  margin: 1rem;
+  width:300px;
+  overflow: hidden;
+
+
+
+}
+.round-time-bar div {
+  height: 25px;
+  border-radius:10px;
+  background: linear-gradient(to left, #F8C83C, #D51E22);
+
+}
+
+.animate-timer {
+  animation: roundtime 30s linear;
+  transform-origin: left center;
+  border-radius:10px;
+}
+
+@keyframes roundtime {
+  from {
+    transform: scaleX(1);
+  }
+  to {
+    /* More performant than `width` */
+    transform: scaleX(0);
+  }
+}
