@@ -160,11 +160,7 @@
 <% @games.each do |game| %>
   Jeu numéro : <%= game.id %>
 <% end %>
-
 <% if @pending_game.present? %>
-  <div> (partial)
-    <p>Partie en cours</p>
-    <p>copiez le lien ci dessous pour inviter votre ami(e)</p>
     <%= url_for(controller: 'games', action: 'shifoumi', id: @pending_game.id, player_two: true) %>
     <%= link_to "Lancer la partie", game_path(@pending_game), class: "btn btn-primary" %>
     <!-- <p>localhost:3000/games/<%= @pending_game.id %>/shifoumi?player_two=true</p> -->

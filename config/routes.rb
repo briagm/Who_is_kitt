@@ -8,7 +8,7 @@ Rails.application.routes.draw do
       get :shifoumi
       get :invite
       patch :save_winner
-      get :select_character
+      patch :select_character
       post :save_character
     end
   end
