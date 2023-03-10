@@ -3,10 +3,13 @@
 
 // To use a font file (.woff) uncomment following lines
 @font-face {
+
   font-family: "street";
   src: font-url('street.woff') format('woff')
+
 }
 
 // Define fonts for body and headers
+$h1-font: 'street';
 $body-font: 'Cabin', sans-serif;
 $headers-font: "street", "Helvetica", "sans-serif";
