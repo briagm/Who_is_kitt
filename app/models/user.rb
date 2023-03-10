@@ -6,5 +6,8 @@ class User < ApplicationRecord
   has_many :players
   has_one_attached :photo
   has_many :games, through: :players
- 
+
+  def active_player(game)
+    Player.find_by(game:, user: self)
+  end
 end

@@ -1,9 +1,8 @@
-
-<%= render partial: "finish_game" %>
-<%= render partial: "active_game" %>
-<%= render partial: "pending_game" %>
-
-
+ 
+<% if @game.active? %>
+  <%= render "active_game" %>
+<% elsif @game.started? %>
+ 
 
 <div class="container"
   data-controller="game-subscription"

@@ -6,7 +6,7 @@ class DashboardsController < ApplicationController
     @user_ranking = user_ranking
     @games = @user.games
     @new_game = Game.new
-    @pending_game = @games.where(status: 'pending').first
+    @pending_game = @games.where(status: 'pending').last
   end
 
 

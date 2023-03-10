@@ -10,13 +10,13 @@ export default class extends Controller {
   connect() {
     console.log("GameSubscriptionController")
     // Création d'un abonnement à un canal Action Cable
-    this.channel = createConsumer().subscriptions.create(
-      { channel: "GameChannel", id: this.gameIdValue }, // Spécification du nom du canal et de l'ID du jeu
-      {
-        // Cette fonction est appelée lorsque des données sont reçues sur le canal
-        received: data => this.questionsTarget.insertAdjacentHTML("beforeend", data) // Insère les données dans la cible "questions"
-      }
-    )
+    // this.channel = createConsumer().subscriptions.create(
+    //   { channel: "GameChannel", id: this.gameIdValue }, // Spécification du nom du canal et de l'ID du jeu
+    //   {
+    //     // Cette fonction est appelée lorsque des données sont reçues sur le canal
+    //     received: data => this.questionsTarget.insertAdjacentHTML("beforeend", data) // Insère les données dans la cible "questions"
+    //   }
+    // )
     console.log(`Abonnement au jeu avec l'ID ${this.gameIdValue}.`) // Affiche un message dans la console indiquant que l'abonnement a été créé
   }
 }
