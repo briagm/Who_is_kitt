@@ -4,6 +4,9 @@
 
 import { application } from "./application"
 
+import GameLogicController from "./game_logic_controller"
+application.register("game-logic", GameLogicController)
+
 import GameSubscriptionController from "./game_subscription_controller"
 application.register("game-subscription", GameSubscriptionController)
 
