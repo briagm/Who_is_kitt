@@ -1,6 +1,7 @@
 <div class="container"
   data-controller="game-subscription"
   data-game-subscription-game-id-value="<%= @game.id %>">
+
   <div id="game_<%= @game.id %>">
     <% if @game.pending? %>
       <%= render partial: "pending_game", locals: { game: @game } %>
@@ -9,6 +10,8 @@
     <% elsif @game.started? %>
       <%= render partial: "started_game", locals: { game: @game } %>
     <% elsif @game.finished? %>
-
     <% end %>
   </div>
+ 
+</div>
+ 
