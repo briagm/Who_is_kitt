@@ -52,7 +52,7 @@ class CharacteristicQuestionsController < ApplicationController
 
     if @characteristic_question.update(answer: params[:answer])
       Turn.create(player: current_user.active_player(@game), number: @game.turns.last.number + 1)
-      redirect_to game_path(@game)
+       redirect_to game_path(@game)
 
     else
       render "games/show"

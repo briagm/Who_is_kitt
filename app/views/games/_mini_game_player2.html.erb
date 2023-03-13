@@ -1,18 +1,18 @@
-  <% if current_user.id  == @player_two.user_id %>
+  <% if current_user == @player_two.user %>
 
  <div class="mini-game-grid">
-  <% @game.player_one_active_cards.each do |card| %>
-    <% if card.active == true %>
+  <% @player_one_cards.each do |card| %>
+     <% if card.active %>
       <div class="mini-card"></div>
     <% else %>
-      <div class="mini-card-false"></div>
+      <div class="mini-card red"></div>
     <% end %>
   <% end %>
 </div>
 <% else %>
 
  <div class="mini-game-grid">
-  <% @game.player_two_active_cards.each do |card| %>
+  <% @player_two_cards.each do |card| %>
     <% if card.active == true %>
       <div class="mini-card"></div>
     <% else %>
