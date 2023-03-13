@@ -1,5 +1,6 @@
 class Game < ApplicationRecord
   has_many :players, dependent: :destroy
+  has_many :turns, through: :players
   has_many :users, through: :players
   has_many :characteristic_questions, dependent: :destroy
 
@@ -29,8 +30,20 @@ class Game < ApplicationRecord
     players.last.cards.where(active: true)
   end
 
+  def pending!
+    update(status: "pending")
+  end
+
+  def pending?
+    status == "pending"
+  end
+
   def active!
     update(status: "active")
+  end
+
+  def active?
+    status == "active"
   end
 
   def started!
@@ -39,10 +52,6 @@ class Game < ApplicationRecord
 
   def started?
     status == "started"
-  end
-
-  def active?
-    status == "active"
   end
 
   private

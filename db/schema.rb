@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_09_151119) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_13_113455) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -109,10 +109,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_09_151119) do
   create_table "turns", force: :cascade do |t|
     t.integer "number"
     t.bigint "player_id", null: false
-    t.bigint "card_id", null: false
-    t.bigint "characteristic_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "card_id"
+    t.bigint "characteristic_id"
     t.index ["card_id"], name: "index_turns_on_card_id"
     t.index ["characteristic_id"], name: "index_turns_on_characteristic_id"
     t.index ["player_id"], name: "index_turns_on_player_id"
