@@ -43,6 +43,8 @@ class GamesController < ApplicationController
     # @player = Player.where(game_id: @game)
     # @card = Card.where(player_id: @player)
     @player_one = @game.players[0]
+    @player_two = @game.players[1]
+
     @player_one_cards = @player_one.cards
     @player_one_active_cards = @player_one_cards.select{ |card| card.active }
     @player_one_guess_card = @player_one_cards.where{ |card| card.guess }
