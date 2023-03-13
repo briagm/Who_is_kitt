@@ -44,7 +44,6 @@
     </div>
   </div>
 
-  <%# DEBUT PLATEAU JEU %>
   <div class="player-one-deck container text-center">
       <div class="card-tray">
         <% @player_one_cards.shuffle.each do |card| %>
@@ -56,13 +55,12 @@
           <% else %>
             <%= cl_image_tag card.character.photo.key, width: 103, height: 190, crop: :fill, class: "disactive-card radius" %>
           <% end %>
-          <% end %>
+        <% end %>
       </div>
-       <div class="d-flex">
- <%# DEBUT CHAT %>
+      <div class="d-flex">
         <div class="d-flex container-chat"
           data-controller="game-subscription"
-          data-game-subscription-game-id-value=>
+          data-game-subscription-game-id-value="">
           <%#= render partial: "game", locals: { game: @game } %>
 
           <div class="d-flex justify-content-end">
@@ -79,13 +77,6 @@
 
 
        </div>
-         <%# FIN CHAT %>
     </div>
   </div>
-  <%# FIN DU PLATEAU JEU %>
-
-
-
-
-<%# FIN DU BG %>
 </div>
