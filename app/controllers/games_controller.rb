@@ -13,17 +13,41 @@ class GamesController < ApplicationController
     @card.update(guess: true)
 
     # si les deux joueurs ont choisi leur personnage
-    if @game.players[0].cards.where(guess: true) && @game.players[1].cards.where(guess: true)
     # alors on redirige vers la partial started_game
-      @game.started!
-    end
+    @game.started! if @game.players.first.cards.find_by(guess: true) && @game.players.last.cards.find_by(guess: true)
+
+    redirect_to game_path(@game)
   end
 
-  # def save_character
-    # ...
+  # la méthode move gère le gameplay réel
+  def move
+    @end = false
+    @game = Game.find(params[:game])
+    # initialisation des tours de jeu à 0
+    @turn = 0
+    # initialisation du joueur qui commence
+    @player_one = @game.players.first
+    # initialisation du joueur qui répond
+    @player_two = @game.players.last
+    # le joueur qui commence pose une question
+    @question = CharacteristicQuestion.new
+    # on récupère toutes les caractéristiques
+    @characteristics = Characteristic.all
+    # on récupère toutes les cartes du joueur qui commence
+    @player_one_cards = @player_one.cards
+    # on récupère toutes les cartes du joueur qui répond
+    @player_two_cards = @player_two.cards
+    # on récupère toutes les cartes actives du joueur qui commence
+    @player_active_cards = @player_one_cards.select { |card| card.active }
+    # on récupère toutes les cartes actives du joueur qui répond
+    @player_two_active_cards = @player_two_cards.select { |card| card.active }
+    # on récupère toutes les cartes du joueur qui commence qui sont des guess
+    @player_guess_card = @player_one_cards.find_by(guess: true)
+  end
 
-  #  redirect_to game_path(@game)
-  # end
+  def ask_characteristic
+    # redirect_to game_path(@game)
+  end
 
   def show
     # raise
@@ -36,23 +60,28 @@ class GamesController < ApplicationController
       player.winner = false
     end
 
-    # @game = Game.find(params[:id])
     @characteristic_question = CharacteristicQuestion.new
     @characteristic_collection = Characteristic.all
 
-    # @player = Player.where(game_id: @game)
-    # @card = Card.where(player_id: @player)
-    @player_one = @game.players[0]
+    @player_one = @game.players.first
     @player_one_cards = @player_one.cards
-    @player_one_active_cards = @player_one_cards.select{ |card| card.active }
-    @player_one_guess_card = @player_one_cards.where{ |card| card.guess }
+    @player_one_active_cards = @player_one_cards.select(&:active)
+    @player_one_guess_card = @player_one_cards.find_by(guess: true)
 
-    if @game.players.count > 1 && !@game.started?
-      @game.active!
-      # @player_two_cards = @player_two.cards
-      # @player_two_active_cards = @player_two_cards.select{ |card| card.active }
-      # @player_two_guess_card = @player_two_cards.select{ |card| card.guess }
-    end
+    @player_two = @game.players.last
+    @player_two_cards = @player_two.cards
+    @player_two_active_cards = @player_two_cards.select { |card| card.active }
+    @player_two_guess_card = @player_two_cards.find_by(guess: true)
+
+    @game.active! if @game.players.count > 1 && @game.pending?
+
+    puts "#########################"
+    puts "Creating turn"
+    p @game.turns.find_by(number: 1)
+
+    Turn.create!(player: @game.players.sample, number: 1) unless @game.turns.find_by(number: 1)
+    puts "#########################"
+
     @characteristics = Characteristic.all
   end
 
@@ -72,43 +101,15 @@ class GamesController < ApplicationController
   end
 end
 
- # def generate_game_link
- #  url_for(controller: 'games', action: 'shifoumi', id: @game.id, player_two: true)
- #   "localhost:3000/games/1/shifoumi?player_two=true"
- # end
+# DEROULEMENT D'UNE GAME
 
-  # def invite
-    # inviter le player 2 à rejoindre la partie
-  #  player2 = Player.find(params[:player2_id])
-  #  player2.update(game: @game)
-  #  redirect_to shifoumi_game_path(@game)
-    # envoyer un lien à player 2 vers la page de shifoumi
-    # le lien doit contenir l'id de la game
-    # le lien doit contenir un paramètre player_two=true
-  # end
-
-  # def shifoumi
-  #  if @game.players.count == 1 && @game.players.first.user != current_user && params[:player_two]
-  #    Player.create(user: current_user, game: game, score: 0)
-  #  end
-
-  #  @players = @game.players
-  # end
-
-  # def save_winner
-    # sauvegarder le gagnant du shifoumi dans la table player
-    # le winner est le player qui a gagné le shifoumi
-    # le winner est le current_player
-    # ...
-
-  #  redirect_to select_character_game_path(@game)
-  # end
-
-
-# create card_controller
-
-# def create
-#  @character = Character.find(params[:character_id])
-#  @player = current_user.player
-#  redirect_to game_path @player.game
-# end
+# les deux sont sur la started game
+# par défault c'est le joueur qui a créé la partie qui commence
+# le joueur 1 pose sa question dans le chat (en cliquant sur l'attribut correspondant)
+# le joueur 2 répond oui/non dans le chat
+# en fonction de la réponse du joueur 2, les cartes conçernées se désactivent sur le plateau du joueur 1
+# c'est au joueur 2 de poser sa question
+# au début du 3eme tour les joueurs peuvent buzzer pour trouver leur personnage
+# un des joueurs buzz
+# sa réponse est bonne, il gagne la partie, on lui ajoute des points
+# sa réponse est fausse, il perd la partie
