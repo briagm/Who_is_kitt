@@ -1,3 +1,4 @@
+<%#= render "started_game" %>
 
 <% if @game.active? %>
   <%= render "active_game" %>
@@ -5,7 +6,8 @@
 
   <div class="container"
     data-controller="game-subscription"
-    data-game-subscription-game-id-value=>"<%= @game.id %>"
+    data-game-subscription-game-id-value="<%= @game.id %>">
+
     <%= render partial: "game", locals: { game: @game } %>
 
   <div class="d-flex justify-content-end">

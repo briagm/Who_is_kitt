@@ -14,6 +14,8 @@ export default class extends Controller {
     }, 1000);
 
   }
+
+
 }
 
 // const bars = document.querySelectorAll(".round-time-bar");
