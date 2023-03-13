@@ -64,6 +64,8 @@ class GamesController < ApplicationController
     @characteristic_collection = Characteristic.all
 
     @player_one = @game.players.first
+    @player_two = @game.players.last
+
     @player_one_cards = @player_one.cards
     @player_one_active_cards = @player_one_cards.select(&:active)
     @player_one_guess_card = @player_one_cards.find_by(guess: true)

@@ -18,6 +18,11 @@
   transform-origin: left center;
   border-radius:10px;
 }
+.animate-timer-player2 {
+  animation: roundtime 30s linear;
+  transform-origin: right center;
+  border-radius:10px;
+}
 
 @keyframes roundtime {
   from {
